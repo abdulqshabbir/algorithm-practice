@@ -20,7 +20,7 @@ BinarySearchTree.prototype.insertNode = function(val) {
     else {
         currentNode = this.root;
         while(currentNode) {
-            //while currentNode exists
+            //loop until node has been inserted
 
             if(val < currentNode.data) {
                 if(!currentNode.left) {
@@ -35,10 +35,12 @@ BinarySearchTree.prototype.insertNode = function(val) {
             }
             else if (val > currentNode.data) {
                 if(!currentNode.right) {
+                    //if right node on current node desn't exist, create it
                     currentNode.right = node; 
                     break; 
                 }
                 else {
+                    // traverse the tree to the next node on the right
                     currentNode = currentNode.right; 
                 }
             }
@@ -51,14 +53,9 @@ BinarySearchTree.prototype.insertNode = function(val) {
 };
 
 
-let firstNode = new BinarySearchTree();
-firstNode.insertNode(6);
-
-let secondNode = new BinarySearchTree();
-firstNode.insertNode(4);
-
-let thirdNode = new BinarySearchTree();
-firstNode.insertNode(2);
-
-console.log(firstNode);
-console.log(secondNode);
+let myShinyNewTree = new BinarySearchTree();
+myShinyNewTree.insertNode(6);
+myShinyNewTree.insertNode(4);
+myShinyNewTree.insertNode(2);
+myShinyNewTree.insertNode(7);
+myShinyNewTree.insertNode(5);
