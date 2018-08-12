@@ -61,17 +61,29 @@ BST.insertNode(3);
 BST.insertNode(12);
 BST.insertNode(17);
 
-BinarySearchTree.prototype.preOrderTraversal = function(root) {
-    console.log(root.data);  
-    if(root.left) {
-        //if left node exists traverse the tree
-        this.preOrderTraversal(root.left); 
+console.log('BST', BST); 
+
+//          10
+//       5       15
+//     2
+
+
+BinarySearchTree.prototype.inOrderTraversal = function(root) {
+    if (root.left) {
+        this.inOrderTraversal(root.left);
     }
+    console.log(root.data); 
+
     if (root.right) {
-        //if right node exists traverse the tree towards teh right
-        this.preOrderTraversal(root.right);
+        this.inOrderTraversal(root.right);
     }
-}; 
+    if (!root.right) {
+        
+    }
+};
 
-BST.preOrderTraversal(BST.root); 
+BST.inOrderTraversal(); 
 
+//        40
+//    32       78
+// 10   25
