@@ -19,6 +19,38 @@ LinkedList.prototype.addToHead = function(value) {
     this.head = newNode;
 
     this.length++; 
-    console.log(this); 
     return this; 
-}; 
+};
+
+LinkedList.prototype.addNodeToGivenPosition = function(insertValue, insertPos) {
+    //retrieve head pointer
+    let head = this.head;  
+    const newNode = {
+        value: insertValue,
+        next: null 
+    };
+    if(insertPos == 1) {//if inserting into first position
+        this.addToHead(insertValue);
+        return this; 
+    } else if (insertPos == 2) {
+        this.head.next = newNode;
+        return this; 
+    } else if (insertPos > 2) {
+        //traverse the linked list
+        let currentNode = this.head;
+        while(currentNode.next !== null) {
+            currentNode = currentNode.next; 
+        }
+        //set last node's next pointer to reference the new node
+        currentNode.next = newNode;
+    }
+};
+
+list = new LinkedList(); 
+
+list.addNodeToGivenPosition('first', 1);
+list.addNodeToGivenPosition('second', 2);
+list.addNodeToGivenPosition('third', 3);
+list.addNodeToGivenPosition('fourth', 4);
+
+console.log(list);

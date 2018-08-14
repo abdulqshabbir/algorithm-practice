@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/tree_traversal.js"
+            "program": "${workspaceFolder}/linked_list.js"
         }
     ]
 }
