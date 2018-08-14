@@ -33,16 +33,22 @@ LinkedList.prototype.addNodeToGivenPosition = function(insertValue, insertPos) {
         this.addToHead(insertValue);
         return this; 
     } else if (insertPos == 2) {
-        this.head.next = newNode;
+        //set the next pointer of the new node to point to the same address as the 
+        // next pointer of the first node
+        newNode.next = this.head.next;
+        this.head.next = newNode; 
         return this; 
     } else if (insertPos > 2) {
         //traverse the linked list
-        let currentNode = this.head;
-        while(currentNode.next !== null) {
-            currentNode = currentNode.next; 
+        let nodeBeforeInsert = this.head;
+        let index = 1;
+        while(index < insertPos - 1) {
+            nodeBeforeInsert = nodeBeforeInsert.next;
+            index++; 
         }
-        //set last node's next pointer to reference the new node
-        currentNode.next = newNode;
+        newNode.next = nodeBeforeInsert.next; 
+        nodeBeforeInsert.next = newNode; 
+        return this; 
     }
 };
 
@@ -52,5 +58,6 @@ list.addNodeToGivenPosition('first', 1);
 list.addNodeToGivenPosition('second', 2);
 list.addNodeToGivenPosition('third', 3);
 list.addNodeToGivenPosition('fourth', 4);
+list.addNodeToGivenPosition('new fourth', 4);
 
-console.log(list);
+console.log(list); 
